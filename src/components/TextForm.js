@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("");
-
+  let value = "";
   const changeUpper = () => {
     let new_text = text.toUpperCase();
     setText(new_text);
@@ -16,7 +16,6 @@ export default function TextForm(props) {
     text.select();
     navigator.clipboard.writeText(text.value);
   };
-
   return (
     <>
       <div className="container mt-4">
@@ -56,8 +55,9 @@ export default function TextForm(props) {
       >
         <h4>Some Detail About Your Text: </h4>
         <h5>
-          Your Text Have {text.split(" ").length} Words And {text.length}{" "}
-          Charecters
+          Your Text Have{" "}
+          {text.split(" ").filter((item) => item !== value).length} Words And{" "}
+          {text.split("").filter((item) => item !== ' ').length} Charecters
         </h5>
       </div>
       <div
